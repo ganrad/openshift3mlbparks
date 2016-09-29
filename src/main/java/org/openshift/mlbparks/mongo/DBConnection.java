@@ -45,12 +45,13 @@ public class DBConnection {
 		Mongo mongo = null;
 		try {
 			mongo = new Mongo(mongoHost, port);
-			System.out.println("Connected to database");
+			System.out.println("Connected to Host:" + mongoHost + ", Port:" + port);
 		} catch (UnknownHostException e) {
 			System.out.println("Couldn't connect to MongoDB: " + e.getMessage() + " :: " + e.getClass());
 		}
 
 		mongoDB = mongo.getDB(mongoDBName);
+		System.out.println("Connected to Database: " + mongoDBName);
 
 		if (mongoDB.authenticate(mongoUser, mongoPassword.toCharArray()) == false) {
 			System.out.println("Failed to authenticate DB ");
